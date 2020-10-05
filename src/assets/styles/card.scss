@@ -1,0 +1,193 @@
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background: var(--color-theme-2);
+    overflow: auto;
+    box-sizing: border-box;
+    &:before {
+        content: '';
+        top: 120px;
+        left: 0;
+        right: 0;
+        position: absolute;
+        height: 1px;
+        background-color: var(--color-theme-6);
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    }
+    .card-wrap {
+        display: grid;
+        max-width: 1024px;
+        margin: auto;
+        grid-gap: var(--padding-midi);
+        align-items: start;
+        padding: var(--padding-midi);
+        box-sizing: border-box;
+    }
+}
+.card .header {
+    grid-area: header-card;
+    position: relative;
+    text-align: left;
+    padding-left: 250px;
+    .title {
+        margin: 0;
+        color: var(--color-primary);
+        font-weight: 400;
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        padding: var(--height-module) 0 var(--padding-small) 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .subtitle {
+        display: block;
+        padding-bottom: var(--padding-midi);
+    }
+    .edit {
+        position: absolute;
+        display: block;
+        right: var(--padding-base);
+        top: 50px;
+        font-size: 1.3rem;
+        padding: 0;
+    }
+    .contacts-block {
+        display: inline-block;
+        padding: var(--padding-base) 0;
+    }
+    .location {
+        position: absolute;
+        display: block;
+        align-self: stretch;
+        text-align: center;
+        right: var(--padding-base);
+        bottom: 33px;
+        padding: var(--padding-midi);
+        background-color: var(--color-theme-4);
+        font-weight: bold;
+        font-size: 0.8rem;
+        line-height: 1;
+        .icon {
+            font-size: initial;
+        }
+    }
+    .avatar-wrap {
+        position: absolute;
+        display: inline-block;
+        top: 30px;
+        left: var(--height-module);
+        border-radius: 50%;
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+        border: 8px solid var(--color-theme-2);
+        margin: var(--padding-midi);
+        background-color: var(--color-theme-2);
+    }
+    }
+    .card .contact {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    padding: 0;
+    margin-right: var(--padding-midi);
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
+    &:hover {
+        opacity: .9;
+    }
+    &:focus {
+        outline: 1px dotted grey;
+    }
+    &.phone {
+        background-color: var(--color-green);
+        background-image: url('./../phone.svg');
+    }
+    &.skype {
+        background-color: var(--color-blue);
+        background-image: url('./../skype.svg');
+    }
+    &.email {
+        background-color: var(--color-link);
+        margin: 0;
+        background-image: url('./../email.svg');
+    }
+}
+
+.card .location-block {
+  grid-area: map;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  header {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 0;
+      background-color: var(--color-theme-4);
+      .organization {
+          padding: var(--padding-midi);
+          padding-bottom: 0;
+      }
+      .country {
+          font-size: var(--font-size-midi);
+          padding: var(--padding-small) var(--padding-midi);
+      }
+  }
+  #map {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+  }
+}
+
+@media (min-width: 767.98px) and (max-width: 991.98px) { 
+  .card .header {
+      padding-left: 200px;
+      .avatar-wrap {
+          left: var(--padding-midi);
+      }
+  }
+}
+@media (max-width: 767.98px) {
+  .card:before {
+    top: 320px;
+  }
+  .card .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-left: 0;
+      .avatar-wrap,
+      .edit,
+      .title,
+      .contacts-block,
+      .subtitle {
+          padding: 0;
+          position: static;
+      }
+      .location {
+          position: static;
+      }
+      .title,
+      .subtitle {
+          margin-bottom: var(--padding-small);
+      }
+      .edit,
+      .contacts-block {
+          margin-bottom: var(--padding-midi);
+      }
+      .contacts-block {
+          padding: 0 var(--padding-midi);
+          background-color: var(--color-theme-2);
+      }
+  }
+}
